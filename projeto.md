@@ -1,4 +1,4 @@
---- SISTEMA DE MARCAÇÃO DE CONSULTAS ---
+# SISTEMA DE MARCAÇÃO DE CONSULTAS
 
 Procedimentos (Nome doença, Num Sessões, Tempo mínimo, Tempo máximo, Duração Sessão)
 Pacientes (Nome, CPF, Doenças)
@@ -11,11 +11,11 @@ Considerar feriados, remarcando se for necessário
 As consultas podem ser realizadas por médicos diferentes de acordo com a disponibilidade
 
 
-* Daily todos os dias (15 minutos) às 9h * 
+## Daily todos os dias (15 minutos) às 9h
 
-Tarefas a serem desenvolvidas
+### Tarefas a serem desenvolvidas
 
-Sprint 1 [01/08/23 - 08/08/23]:
+### Sprint 1 [01/08/23 - 08/08/23]:
 Estruturar o projeto:
 	Criação das structs, estrutura da base de dados (armazenamento em arquivo de texto), CRUD das entidades a partir do prompt:
 
