@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 typedef struct{
     char nome[50];
@@ -30,22 +31,57 @@ void removerPaciente(Paciente *paciente) {
     printf("\n");
 }
 
-void atualizarPaciente(Paciente *paciente){
-    
+void atualizarPaciente(Paciente *paciente, char *campo, char *dado) {
+    if (strcasecmp(campo, "nome") == 0) {
+        strcpy(paciente->nome, dado);
+    } else if (strcasecmp(campo, "cpf") == 0) {
+        strcpy(paciente->CPF, dado);
+    } else if (strcasecmp(campo, "doenca") == 0) {
+        strcpy(paciente->doenca, dado);
+    } else {
+        printf("Campo inválido.\n");
+    }
+
+    printf("\n");
+
+    return;
 }
 
 int main(){
     Paciente paciente1;
+    char update[10];
+    int remove;
 
     cadastrarPaciente(&paciente1);
     printf("Nome do paciente: %s\n", paciente1.nome);
     printf("CPF do paciente: %s\n", paciente1.CPF);
     printf("Doenca do paciente: %s\n", paciente1.doenca);
 
-    removerPaciente(&paciente1);
+    printf("\nO que voce deseja atualizar?\nDigite: ");
+    scanf(" %[^\n]", update);
+
+    if (strcasecmp(update, "nome") == 0 || strcasecmp(update, "cpf") == 0 || strcasecmp(update, "doenca") == 0) {
+        char novoValor[50];
+        printf("Digite o novo valor para %s: ", update);
+        scanf(" %[^\n]", novoValor);
+
+        atualizarPaciente(&paciente1, update, novoValor);
+    } else {
+        printf("Campo inválido.\n");
+    }
+
     printf("Nome do paciente: %s\n", paciente1.nome);
     printf("CPF do paciente: %s\n", paciente1.CPF);
     printf("Doenca do paciente: %s\n", paciente1.doenca);
+
+    printf("\nDeseja limpar seus dados?\nDigite 1 para sim, 0 para nao: ");
+    scanf("%d", &remove);
+    if (remove==1){
+        removerPaciente(&paciente1);
+        printf("Nome do paciente: %s\n", paciente1.nome);
+        printf("CPF do paciente: %s\n", paciente1.CPF);
+        printf("Doenca do paciente: %s\n", paciente1.doenca);
+    }
 
     return 0;
 }
