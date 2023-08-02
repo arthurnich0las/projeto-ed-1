@@ -19,9 +19,9 @@ As consultas podem ser realizadas por médicos diferentes de acordo com a dispon
 Estruturar o projeto:
 	Criação das structs, estrutura da base de dados (armazenamento em arquivo de texto), CRUD das entidades a partir do prompt:
 
-  [ ] Struct e CRUD pelo prompt de procedimentos -> Desenvolvedor: Bruno; Prazo: 01/08/23
+  [ ] Struct e CRUD pelo prompt de procedimentos -> Desenvolvedor: Bruno; Prazo: 01/08/23 
 	
-  [ ] Struct e CRUD pelo prompt de pacientes -> Desenvolvedor: Arthur; Prazo: 02/08/23
+  [X] Struct e CRUD pelo prompt de pacientes -> Desenvolvedor: Arthur; Prazo: 02/08/23
 	
   [ ] Struct e CRUD pelo prompt de médicos -> Desenvolvedor: Arthur; Prazo: 02/08/23
 	
