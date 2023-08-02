@@ -31,13 +31,26 @@ void removerPaciente(Paciente *paciente) {
     printf("\n");
 }
 
-void atualizarPaciente(Paciente *paciente, char *campo, char *dado) {
-    if (strcasecmp(campo, "nome") == 0) {
-        strcpy(paciente->nome, dado);
-    } else if (strcasecmp(campo, "cpf") == 0) {
-        strcpy(paciente->CPF, dado);
-    } else if (strcasecmp(campo, "doenca") == 0) {
-        strcpy(paciente->doenca, dado);
+void atualizarPaciente(Paciente *paciente) {
+    char update[10];
+    char novoValor[50];
+    printf("\nO que voce deseja atualizar?\nDigite: ");
+    scanf(" %[^\n]", update);
+
+    if (strcasecmp(update, "nome") == 0 || strcasecmp(update, "cpf") == 0 || strcasecmp(update, "doenca") == 0) {
+        char novoValor[50];
+        printf("Digite o novo valor para %s: ", update);
+        scanf(" %[^\n]", novoValor);
+
+        if (strcasecmp(update, "nome") == 0) {
+            strcpy(paciente->nome, novoValor);
+        } else if (strcasecmp(update, "cpf") == 0) {
+            strcpy(paciente->CPF, novoValor);
+        } else if (strcasecmp(update, "doenca") == 0) {
+            strcpy(paciente->doenca, novoValor);
+        } else {
+            printf("Campo inválido.\n");
+        }
     } else {
         printf("Campo inválido.\n");
     }
@@ -57,18 +70,7 @@ int main(){
     printf("CPF do paciente: %s\n", paciente1.CPF);
     printf("Doenca do paciente: %s\n", paciente1.doenca);
 
-    printf("\nO que voce deseja atualizar?\nDigite: ");
-    scanf(" %[^\n]", update);
-
-    if (strcasecmp(update, "nome") == 0 || strcasecmp(update, "cpf") == 0 || strcasecmp(update, "doenca") == 0) {
-        char novoValor[50];
-        printf("Digite o novo valor para %s: ", update);
-        scanf(" %[^\n]", novoValor);
-
-        atualizarPaciente(&paciente1, update, novoValor);
-    } else {
-        printf("Campo inválido.\n");
-    }
+    atualizarPaciente(&paciente1);
 
     printf("Nome do paciente: %s\n", paciente1.nome);
     printf("CPF do paciente: %s\n", paciente1.CPF);
