@@ -50,6 +50,10 @@ void cadastrarMedico(Medico *medico){
     return;
 }
 
+void removerMedico(Medico *medico){
+
+}
+
 int main(){
     int option;
     printf("1 - Cadastrar medico\n2 - Listar medicos\n3 - Atualizar dados de medicos\n4 - Deletar medicos\n");
