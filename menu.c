@@ -4,11 +4,28 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+typedef struct {
+    char nome[50];
+    int numSessoes;
+    int tempoMin;
+    int tempoMax;
+    double duracaoSessao;
+} Procedimento;
+
 typedef struct{
     char nome[50];
     char CPF[12];
     char doenca[50];
+    Procedimento doencas[10];
 } Paciente;
+
+typedef struct{
+    char nome[50];
+    char crm[20];
+    char especialidade[50]; // Dermatologico
+    Procedimento prcedimentos[10];
+} Medico;
+
 
 void listarPacientes() {
     FILE *arquivo = fopen("pacientes.txt", "r");
@@ -220,13 +237,6 @@ void menuPacientes(){
 
 }
 
-typedef struct{
-    char nome[50];
-    char crm[20];
-    char especialidade[50];
-    char procedimentos[70];
-} Medico;
-
 void listarEspecialidades(){
     printf("\n1 - Aftas\n2 - Hipersensibilidade\n3 - Lesoes\n4 - Pos-cirurgia\n5 - Nevralgia\n6 - Consulta\n");
     return;
@@ -282,6 +292,39 @@ void removerMedico(Medico *medico){
 
 }
 
+void cadastrarDoenca() {
+    Procedimento procedimento;
+    printf("\n --- Cadastro de procedimento ---\n");
+    printf("\nNome: ");
+    scanf(" %[^\n]", procedimento.nome);
+    
+    printf("Numero de sessoes: ");
+    scanf(" %[^\n]", procedimento.numSessoes);
+
+    printf("Tempo minimo de sessoes: ");
+    scanf(" %[^\n]", procedimento.tempoMin);
+
+    printf("Tempo max de sessoes: ");
+    scanf(" %[^\n]", procedimento.tempoMax);
+
+    printf("Duracao de sessoes: ");
+    scanf(" %[^\n]", procedimento.duracaoSessao);
+
+    FILE *arquivo = fopen("procedimentos.txt", "a"); 
+
+    if (arquivo != NULL) {
+        fprintf(arquivo, "%s;%s;%s;%s;%s\n", procedimento.nome, procedimento.numSessoes, procedimento.tempoMin, procedimento.tempoMax, procedimento.duracaoSessao);
+
+        fclose(arquivo); 
+        printf("\nCadastro do procedimento realizado com sucesso!\n");
+    } else {
+        printf("Erro ao abrir o arquivo!\n");
+    }
+
+    printf("\n");
+
+}
+
 void menuMedicos(){
     int opcao;
 
@@ -334,7 +377,8 @@ int main() {
         printf("1. Menu Pacientes\n");
         printf("2. Menu Medicos\n");
         printf("3. Menu Agendamentos\n");
-        printf("4. Sair\n");
+        printf("4. Cadastrar procedimento\n");
+        printf("5. Sair\n");
         printf("-------------------\n");
         printf("Digite a opção desejada: ");
         scanf("%d", &opcao);
@@ -357,6 +401,10 @@ int main() {
                 printf("Você selecionou o menu de agendamentos.\n");
                 break;
             case 4:
+                system("clear");
+                cadastrarDoenca();
+                break;
+            case 5:
                 system("clear");
                 printf("Encerrando o programa...\n");
                 return 0;
