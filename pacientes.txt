@@ -1,0 +1,4 @@
+Arthur;12345678910;depressao
+Bruno;12312312390;ansiedade
+Nicholas;12332145678;piroquinha
+Pedro;17658612387;hipersensibilidade
